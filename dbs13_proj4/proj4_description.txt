@@ -1,0 +1,43 @@
+Program Description:
+
+This program demonstrates a producer-consumer that utilizes the Pthread 
+library with separate threads running each producer and consumer service. 
+One semaphore is used to count and limit the number of threads that can
+modify the buffer and the binary semaphore is used to mark the if the buffer
+is full. A mutex is also used to lock the critical section of each producer and 
+consumer thread.
+
+Example Output:
+
+drsmith@linprog2:~/COP4610/proj4/dbs13_proj4>proj4 5 5 5
+producer produced 596516649
+consumer consumed 596516649
+producer produced 1350490027
+producer produced 783368690
+consumer consumed 1350490027
+consumer consumed 783368690
+producer produced 1540383426
+consumer consumed 1540383426
+producer produced 35005211
+consumer consumed 35005211
+^C
+Received SIGINT.
+Killing threads...
+producer produced 1726956429
+consumer consumed 1726956429
+producer produced 278722862
+consumer consumed 278722862
+producer produced 468703135
+consumer consumed 468703135
+producer produced 1101513929
+consumer consumed 1101513929
+producer produced 1801979802
+consumer consumed 1801979802
+producer produced 1315634022
+consumer consumed 1315634022
+Exit the program
+
+The program outputs a number in the buffer that is created by the producer. Then
+then a consumer will delete that item from the buffer in the order that it was received.
+When the user hits CNTL + C, the SIGINT is triggers a cancellation of the threads. Last,
+the threads finish the critical section and then terminates the program.
